@@ -1,0 +1,5 @@
+LIBRARY	gen_mmkb
+
+EXPORTS
+	winampGetGeneralPurposePlugin	@1
+	

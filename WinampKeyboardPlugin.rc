@@ -1,0 +1,194 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Английский (США) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // Английский (США) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Английский (Соединенное Королевство) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENG)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_UK
+#pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,1,0,0
+ PRODUCTVERSION 1,1,0,0
+ FILEFLAGSMASK 0x17L
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080904b0"
+        BEGIN
+            VALUE "Comments", "Visit homepage https://www.0x9.io/"
+            VALUE "CompanyName", "0x9.io"
+            VALUE "FileDescription", "Winamp multimedia keyboard plugin"
+            VALUE "FileVersion", "2.0.0.0"
+            VALUE "InternalName", "gen_mmkb"
+            VALUE "LegalCopyright", "Copyright © 2012 0x9.io"
+            VALUE "OriginalFilename", "gen_mmkb.dll"
+            VALUE "ProductName", "Winamp multimedia keyboard plugin"
+            VALUE "ProductVersion", "2.0.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x809, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUT DIALOGEX 0, 0, 227, 161
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CTEXT           "Winamp multimedia keyboard control",IDC_STATIC,7,7,213,8
+    LTEXT           "Winamp plugin to control Winamp from most multimedia keyboards",IDC_STATIC,7,24,213,9
+    LTEXT           "Copyright © 2005 Daniel Hope http://www.hope.co.nz/\n\tRuslan 2012 www.0x9.io",IDC_STATIC,7,97,204,30
+    LTEXT           "https://www.0x9.io/",IDC_HOMEPAGE,53,135,157,8
+    LTEXT           "Homepage :",IDC_STATIC,7,135,43,8
+    LTEXT           "Features :",IDC_STATIC,7,39,34,8
+    LTEXT           "Winamp window does not have to be active for keypresses to be registered",IDC_STATIC,46,38,174,21
+    LTEXT           "Recognises Play/Pause, Next, Prev, Stop, Volume Up, Volume Down, Ctrl+Alt+PgDn, Ctrl+Alt+PgUp keys",IDC_STATIC,46,60,174,21
+    LTEXT           "Version:",IDC_STATIC,7,86,27,8
+    LTEXT           "2.0.0.0  (30 April 2012)",IDC_STATIC,45,86,165,8
+END
+
+IDD_CONFIGURE2 DIALOGEX 0, 0, 217, 161
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Settings"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Respond to these key presses",IDC_STATIC,7,23,203,131
+    CONTROL         "Play / Pause",IDC_PLAY,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,35,186,10
+    CONTROL         "Stop",IDC_STOP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,50,186,10
+    CONTROL         "Previous Track",IDC_PREV,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,65,186,10
+    CONTROL         "Next Track",IDC_NEXT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,80,186,10
+    CONTROL         "Volume Up",IDC_VOLUP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,95,186,10
+    CONTROL         "Volume Down",IDC_VOLDOWN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,110,186,10
+    CTEXT           "Winamp multimedia keyboard control",IDC_STATIC,7,7,203,11
+    CONTROL         "Ctrl+Alt+PgDown / Ctrl+Alt+PgUp",IDC_PG,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,14,125,175,10
+    CONTROL         "Ctrl+Alt+Right / Ctrl+Alt+Left",IDC_PFWD,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,14,139,175,10
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 220
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 154
+    END
+
+    IDD_CONFIGURE2, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 210
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 154
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_ABOUT AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_CONFIGURE2 AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+#endif    // Английский (Соединенное Королевство) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
