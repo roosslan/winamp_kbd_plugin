@@ -13,7 +13,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// Английский (США) resources
+// resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
@@ -44,12 +44,12 @@ END
 
 #endif    // APSTUDIO_INVOKED
 
-#endif    // Английский (США) resources
+#endif    // resources
 /////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////////////////
-// Английский (Соединенное Королевство) resources
+// resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENG)
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_UK
@@ -77,12 +77,12 @@ BEGIN
     BEGIN
         BLOCK "080904b0"
         BEGIN
-            VALUE "Comments", "Visit homepage https://www.0x9.io/"
-            VALUE "CompanyName", "0x9.io"
+            VALUE "Comments", "Visit homepage https://www.0x2.dev/winamp"
+            VALUE "CompanyName", "0x2.dev"
             VALUE "FileDescription", "Winamp multimedia keyboard plugin"
             VALUE "FileVersion", "2.0.0.0"
             VALUE "InternalName", "gen_mmkb"
-            VALUE "LegalCopyright", "Copyright © 2012 0x9.io"
+            VALUE "LegalCopyright", "Copyright В© 2012 0x2.dev"
             VALUE "OriginalFilename", "gen_mmkb.dll"
             VALUE "ProductName", "Winamp multimedia keyboard plugin"
             VALUE "ProductVersion", "2.0.0.0"
@@ -107,8 +107,8 @@ FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
     CTEXT           "Winamp multimedia keyboard control",IDC_STATIC,7,7,213,8
     LTEXT           "Winamp plugin to control Winamp from most multimedia keyboards",IDC_STATIC,7,24,213,9
-    LTEXT           "Copyright © 2005 Daniel Hope http://www.hope.co.nz/\n\tRuslan 2012 www.0x9.io",IDC_STATIC,7,97,204,30
-    LTEXT           "https://www.0x9.io/",IDC_HOMEPAGE,53,135,157,8
+    LTEXT           "Copyright В© 2005 Daniel Hope http://www.hope.co.nz/\n\tRuslan 2012 www.0x2.dev",IDC_STATIC,7,97,204,30
+    LTEXT           "https://www.0x2.dev/",IDC_HOMEPAGE,53,135,157,8
     LTEXT           "Homepage :",IDC_STATIC,7,135,43,8
     LTEXT           "Features :",IDC_STATIC,7,39,34,8
     LTEXT           "Winamp window does not have to be active for keypresses to be registered",IDC_STATIC,46,38,174,21
@@ -177,7 +177,7 @@ BEGIN
     0
 END
 
-#endif    // Английский (Соединенное Королевство) resources
+#endif    //  resources
 /////////////////////////////////////////////////////////////////////////////
 
 
