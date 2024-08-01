@@ -250,7 +250,7 @@ BOOL UninstallHook() {
 	return bResult;
 }
 
-const TCHAR *SETTINGS_KEY = _T("SOFTWARE\\0x9.io\\Winamp keyboard control");
+const TCHAR *SETTINGS_KEY = _T("SOFTWARE\\alabuga.dev\\Winamp keyboard control");
 
 BOOL ReadBool(HKEY hKey, TCHAR *value, BOOL bDefault) {
 	BOOL result = bDefault;
@@ -327,7 +327,7 @@ int InitialisePlugin() {
 INT_PTR CALLBACK ConfigureProcAbout(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
 	switch (uMsg) {
 		case WM_INITDIALOG:
-			CreateUrlControl(hwnd, IDC_HOMEPAGE, _T("https://www.0x9.io/"));
+			CreateUrlControl(hwnd, IDC_HOMEPAGE, _T("https://www.alabuga.dev/"));
 			break;
 		default:
 			break;
