@@ -16,7 +16,7 @@
 
 #include <windows.h>
 
-BOOL CreateUrlControl(HWND hwndDialog, UINT uiControlID, TCHAR *szURL);
+BOOL create_url_control(HWND hwndDialog, UINT uiControlID, TCHAR *szURL);
 
 
 #endif /* _URLCTRL_H_ */
