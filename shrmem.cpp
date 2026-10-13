@@ -18,10 +18,10 @@ const TCHAR *MEMORY_FILENAME = _T("{E75274E5-CAAD-4a4f-9CE0-EAD3146D3810}");
 const TCHAR *MEMORY_MUTEX    = _T("{E75274E5-CAAD-4a4f-9CE0-EAD3146D3810}");
 
 
-VOID Lock();
-VOID Unlock();
+VOID lock();
+VOID unlock();
 
-HANDLE CreateMemoryHandle() {
+HANDLE create_memory_handle() {
 	HANDLE result = NULL;
 //	__try {
 		result = CreateFileMapping(INVALID_HANDLE_VALUE,
@@ -37,7 +37,7 @@ HANDLE CreateMemoryHandle() {
 	return result;
 }
 
-HANDLE OpenMemoryHandle() {
+HANDLE open_memory_handle() {
 	HANDLE result = NULL;
 
 //	__try {
@@ -53,7 +53,7 @@ HANDLE OpenMemoryHandle() {
 	return result;
 }
 
-VOID CloseMemoryHandle(HANDLE hMemory) {
+VOID close_memory_handle(HANDLE hMemory) {
 	if (hMemory != NULL) {
 //		__try {
 			CloseHandle(hMemory);
@@ -63,13 +63,13 @@ VOID CloseMemoryHandle(HANDLE hMemory) {
 	}
 }
 
-BOOL WriteMemory(HANDLE hMemory, const LPBYTE lpBuffer, const DWORD dwBufferSize) {
+BOOL write_memory(HANDLE hMemory, const LPBYTE lpBuffer, const DWORD dwBufferSize) {
 	BOOL result = FALSE;
 	LPVOID lpAddress = NULL;
 
 	if (hMemory != NULL) {
 //		__try {
-			Lock();
+			lock();
 
 			lpAddress = MapViewOfFile(
 				hMemory,
@@ -97,19 +97,19 @@ BOOL WriteMemory(HANDLE hMemory, const LPBYTE lpBuffer, const DWORD dwBufferSize
 //		__except(EXCEPTION_EXECUTE_HANDLER) {
 //		}
 
-		Unlock();
+		unlock();
 	}
 
 	return result;
 }
 
-BOOL ReadMemory(HANDLE hMemory, LPBYTE lpBuffer, DWORD dwBufferSize) {
+BOOL read_memory(HANDLE hMemory, LPBYTE lpBuffer, DWORD dwBufferSize) {
 	BOOL result = FALSE;
 	LPVOID lpAddress = NULL;
 
 	if (hMemory != NULL) {
 //		__try {
-			Lock();
+			lock();
 
 			lpAddress = MapViewOfFile(
 				hMemory,
@@ -137,16 +137,26 @@ BOOL ReadMemory(HANDLE hMemory, LPBYTE lpBuffer, DWORD dwBufferSize) {
 //		__except(EXCEPTION_EXECUTE_HANDLER) {
 //		}
 
-		Unlock();
+		unlock();
 	}
 
 	return result;
 }
 
-VOID Lock() {
-	// TODO:
+static HANDLE s_hMutex = NULL;
+
+VOID lock() {
+	HANDLE hMutex = CreateMutex(NULL, FALSE, MEMORY_MUTEX);
+	if (hMutex != NULL) {
+		WaitForSingleObject(hMutex, INFINITE);
+		s_hMutex = hMutex;
+	}
 }
 
-VOID Unlock() {
-	// TODO:
+VOID unlock() {
+	if (s_hMutex != NULL) {
+		ReleaseMutex(s_hMutex);
+		CloseHandle(s_hMutex);
+		s_hMutex = NULL;
+	}
 }

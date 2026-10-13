@@ -24,9 +24,9 @@ typedef struct tagURLDETAILS {
 	BOOL      bClicking;
 } URLDETAILS, *LPURLDETAILS;
 
-LRESULT CALLBACK UrlControlProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+LRESULT CALLBACK url_control_proc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
-int CreateUrlControl(HWND hwndDialog, UINT uiControlID, TCHAR *szURL) {
+int create_url_control(HWND hwndDialog, UINT uiControlID, TCHAR *szURL) {
 	BOOL bResult = FALSE;
 
 	URLDETAILS *details = NULL;
@@ -41,10 +41,10 @@ int CreateUrlControl(HWND hwndDialog, UINT uiControlID, TCHAR *szURL) {
 			} else {
 				lstrcpy(details->szURL, _T(""));
 			}
-			details->lpPrevWndFunc = (WNDPROC)(LONG_PTR)SetWindowLongPtr(hwnd, GWL_WNDPROC, (LONG)(LONG_PTR)UrlControlProc);
+			details->lpPrevWndFunc = (WNDPROC)(LONG_PTR)SetWindowLongPtr(hwnd, GWLP_WNDPROC, (LONG_PTR)url_control_proc);
 			if (details->lpPrevWndFunc != NULL) {
 				bResult = TRUE;
-				SetWindowLongPtr(hwnd, GWL_USERDATA, (LONG)(LONG_PTR)details);
+				SetWindowLongPtr(hwnd, GWLP_USERDATA, (LONG_PTR)details);
 			}
 		}
 	}
@@ -56,8 +56,8 @@ int CreateUrlControl(HWND hwndDialog, UINT uiControlID, TCHAR *szURL) {
 	return bResult;
 }
 
-static VOID PaintUrlControl(HWND hwnd, URLDETAILS *details) {
-	DWORD dwStyle   = GetWindowLong(hwnd, GWL_STYLE);
+static VOID paint_url_control(HWND hwnd, URLDETAILS *details) {
+	DWORD dwStyle   = (DWORD)GetWindowLongPtr(hwnd, GWL_STYLE);
 	DWORD dwDTStyle = DT_SINGLELINE;
 	RECT rect;
 	PAINTSTRUCT ps;
@@ -90,7 +90,7 @@ static VOID PaintUrlControl(HWND hwnd, URLDETAILS *details) {
 		GetObject(hf, sizeof(LOGFONT), &logfont);
 		logfont.lfUnderline = TRUE;
 		details->hFont = CreateFontIndirect(&logfont);
-		DeleteObject(hf);
+		/* NOTE: hf is a shared stock object, must NOT be deleted */
 	}
 
 	// Choose the underlined font, blue colour, transparent background
@@ -110,7 +110,7 @@ static VOID PaintUrlControl(HWND hwnd, URLDETAILS *details) {
 	EndPaint(hwnd, &ps);
 }
 
-VOID ExecuteUrlControl(HWND hwnd, URLDETAILS *details) {
+VOID execute_url_control(HWND hwnd, URLDETAILS *details) {
 	TCHAR szWindowText[MAX_URL_LENGTH];
 	if (lstrlen(details->szURL) > 0) {
 		ShellExecute(NULL, _T("open"), details->szURL, NULL, NULL, SW_SHOWNORMAL);
@@ -121,17 +121,16 @@ VOID ExecuteUrlControl(HWND hwnd, URLDETAILS *details) {
 }
 
 
-static LRESULT CALLBACK UrlControlProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
+static LRESULT CALLBACK url_control_proc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
 
-	URLDETAILS *details = (URLDETAILS *)(LONG_PTR)GetWindowLongPtr(hwnd, GWL_USERDATA);
+	URLDETAILS *details = (URLDETAILS *)(LONG_PTR)GetWindowLongPtr(hwnd, GWLP_USERDATA);
 	LRESULT result;
 
 	switch(uMsg) {
 		case WM_NCDESTROY:
 			// Clean up
-			if (details->hCursor != NULL) {
-				DestroyCursor(details->hCursor);
-			}
+			/* NOTE: hCursor is a shared system cursor (IDC_HAND), must NOT be destroyed */
+			details->hCursor = NULL;
 			if (details->hFont != NULL) {
 				DeleteObject(details->hFont);
 			}
@@ -147,7 +146,7 @@ static LRESULT CALLBACK UrlControlProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPAR
 			return TRUE;
 
 		case WM_PAINT:
-			PaintUrlControl(hwnd, details);
+			paint_url_control(hwnd, details);
 			return TRUE;
 
 		case WM_SETTEXT:
@@ -162,7 +161,7 @@ static LRESULT CALLBACK UrlControlProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPAR
 		case WM_LBUTTONUP:
 			if (details->bClicking == TRUE) {
 				details->bClicking = FALSE;
-				ExecuteUrlControl(hwnd, details);
+				execute_url_control(hwnd, details);
 			}
 			break;
 

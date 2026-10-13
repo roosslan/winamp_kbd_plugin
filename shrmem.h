@@ -16,10 +16,10 @@
 
 #include <windows.h>
 
-HANDLE CreateMemoryHandle();
-HANDLE OpenMemoryHandle();
-VOID CloseMemoryHandle(HANDLE hMemory);
-BOOL WriteMemory(HANDLE hMemory, const LPBYTE lpBuffer, const DWORD dwBufferSize);
-BOOL ReadMemory(HANDLE hMemory, LPBYTE lpBuffer, DWORD dwBufferSize);
+HANDLE create_memory_handle();
+HANDLE open_memory_handle();
+VOID close_memory_handle(HANDLE hMemory);
+BOOL write_memory(HANDLE hMemory, const LPBYTE lpBuffer, const DWORD dwBufferSize);
+BOOL read_memory(HANDLE hMemory, LPBYTE lpBuffer, DWORD dwBufferSize);
 
 #endif /* _SHRMEM_H_ */
